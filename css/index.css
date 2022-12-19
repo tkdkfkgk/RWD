@@ -338,11 +338,9 @@ input[type="search"] {
     flex-flow: column nowrap;
     justify-content: space-between;
   }
-
   .button--burger:focus {
     outline-offset: 2px;
   }
-
   .button--burgerBarTop,
   .button--burgerBarMiddle,
   .button--burgerBarBottom {
@@ -352,17 +350,14 @@ input[type="search"] {
     border-radius: 20px;
     transition: all 350ms;
   }
-
   .is--active .button--burgerBarTop {
     position: relative;
     top: 50%;
     transform: translateY(-50%) rotate(45deg);
   }
-
   .is--active .button--burgerBarMiddle {
     transform: translateX(-150%);
   }
-
   .is--active .button--burgerBarBottom {
     position: relative;
     top: -50%;
@@ -556,16 +551,6 @@ input[type="search"] {
     max-width: var(--container-width);
     margin-left: auto;
     margin-right: auto;
-  }
-
-  /* 데스크탑 트위터 */
-  .twitter__userProfile {
-    width: 100px;
-    height: 100px;
-  }
-
-  /* 데스크탑 메인 콘텐츠 */
-  .appMain {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
@@ -574,6 +559,12 @@ input[type="search"] {
       "book book book book twitter twitter twitter twitter twitter favorite favorite favorite"
       "book book book book . board board board board board board board";
     gap: var(--spacing-base);
+  }
+
+  /* 데스크탑 트위터 */
+  .twitter__userProfile {
+    width: 100px;
+    height: 100px;
   }
 
   .book {
