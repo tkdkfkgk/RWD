@@ -17,14 +17,14 @@
 /* 공통 로고*/
 .logo {
   width: 12.75rem; /* 204px */
-  height: 3.687rem; /* 59px */  
+  height: 3.687rem; /* 59px */
 }
 
 .logo__link {
-  display: block; /* block 이어야만 부모의 width, height의 속성을 받아 쓸 수 있음 */
+  display: block;
   width: 100%;
   height: 100%;
-  background: url(./../images/webcafe-logo.png) no-repeat 0 0/100%;
+  background: url(./../images/webcafe-logo.png) no-repeat 0 0/100% 100%;
 }
 
 /* 공통 멤버서비스 */
@@ -63,8 +63,7 @@ input[type="search"] {
   height: 2rem;
   border-radius: 0.25rem;
   padding: var(--spacing-sxxs) var(--spacing-sm);
-  /* white-space: nowrap; > flex-shrink: 0;로 변경가능 */
-  flex-shrink: 0;
+  flex: 0 0 auto;
   font-size: var(--text-sm);
 }
 
@@ -86,6 +85,20 @@ input[type="search"] {
   border: 1px solid currentColor;
 }
 
+/* 공통 메인 메뉴 */
+.menu__link {
+  display: block;
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+/* 공통 메인 콘텐츠 */
+.appMain {
+  display: grid;
+  gap: var(--spacing-base);
+  padding: var(--spacing-base) var(--spacing-lg);
+}
+
 /* 모바일 디바이스 (Mobile Device) */
 @media (min-width: 320px) and (max-width: 768px) {
   /* 모바일 헤더 */
@@ -104,6 +117,108 @@ input[type="search"] {
   .searchForm__group .formInput {
     flex-grow: 1;
   }
+
+  /* 모바일 메인메뉴 제어버튼 */
+  .buttonWrapper {
+    padding: var(--spacing-xxs);
+    overflow: hidden;
+    position: absolute;
+    top: 3.75rem;
+    right: var(--spacing-lg);
+    transform: translate(-0.25rem, -0.25rem);
+  }
+
+  .button--burger {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .button--burger:focus {
+    outline-offset: 2px;
+  }
+
+  .button--burgerBarTop,
+  .button--burgerBarMiddle,
+  .button--burgerBarBottom {
+    /* pointer-events: none; */
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background: var(--white);
+    border-radius: 0.25rem;
+    left: 0;
+    transition: all 200ms;
+  }
+
+  .button--burgerBarTop {
+    top: 0;
+  }
+
+  .button--burgerBarMiddle {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .button--burgerBarBottom {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+
+  .button--burger.is--active .button--burgerBarTop {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .button--burger.is--active .button--burgerBarMiddle {
+    transform: translate(-150%, -50%);
+  }
+
+  .button--burger.is--active .button--burgerBarBottom {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* 모베알 메인 메뉴 */
+  .menu__list {
+    background: var(--accent-opacity-color);
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100vh;
+    backdrop-filter: blur(4px);
+    padding: var(--spacing-lg);
+    transform: translateX(-150%);
+    /* transition: all 600ms; */
+  }
+
+  .menu__item {
+    border-bottom: 1px solid var(--silver);
+  }
+
+  .menu__link {
+    padding: var(--spacing-xs);
+  }
+
+  .menu.is--active .menu__list {
+    transform: none;
+  }
+
+  /* 모바일 메인 콘텐츠 */
+  .appMain {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  /* 모바일 새소식 */
+  .news {
+    /* grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  } */
 }
 
 /* 데스크탑 디바이스 (Desktop Device) */
@@ -129,6 +244,34 @@ input[type="search"] {
 
   .searchForm__group .formInput {
     width: 25rem;
+  }
+
+  /* 데스크탑 메인메뉴 제어버튼 */
+  .button--burger {
+    display: none;
+  }
+
+  /* 데스크탑 메인 메뉴 */
+  .menu {
+    background: var(--secondary-color);
+    padding: var(--spacing-base) var(--spacing-lg);
+  }
+
+  .menu__list {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu__link {
+    padding: var(--spacing-md) var(--spacing-lg);
+    color: var(--white);
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 0 var(--black), -1px -1px 0 var(--black);
   }
 }
 
